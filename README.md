@@ -15,6 +15,8 @@
 
 Este trabalho tem como objetivo configurar um ambiente vulnerável e realizar testes de segurança utilizando ferramentas automáticas e técnicas manuais, identificando vulnerabilidades reais e propondo medidas de mitigação.
 
+---
+
 ## 🖥️ Ambiente Utilizado
 
 - Sistema Operacional: Windows 10 / Linux / Outro
@@ -33,6 +35,8 @@ Este trabalho tem como objetivo configurar um ambiente vulnerável e realizar te
 
   - Burp Suite Community
 
+---
+
 ## 📦 Instalação do Ambiente Vulnerável
 ### 1️⃣ Instalar Docker
 
@@ -44,11 +48,17 @@ Verificar instalação:
 
 ``` docker --version ```
 
+---
+
 ### 2️⃣ Baixar OWASP Juice Shop
 ```docker pull bkimminich/juice-shop```
 
+---
+
 ### 3️⃣ Executar o servidor vulnerável
 ```docker run -d -p 3000:3000 --name juice-shop bkimminich/juice-shop```
+
+---
 
 ### 4️⃣ Acessar aplicação
 
@@ -56,12 +66,13 @@ Abrir no navegador:
 
 ```http://localhost:3000```
 
+---
+
 ### 5️⃣ Parar e iniciar o container
 
 Parar:
 
 ```docker stop juice-shop```
-
 
 Iniciar novamente:
 
@@ -72,6 +83,8 @@ Remover:
 
 ```docker rm -f juice-shop```
 
+---
+
 ## 🔎 Ferramentas Utilizadas
 OWASP ZAP
 
@@ -80,6 +93,8 @@ Ferramenta para análise automática de vulnerabilidades web.
 Download:
 https://www.zaproxy.org/download/
 
+---
+
 sqlmap
 
 Ferramenta para exploração automática de SQL Injection.
@@ -87,12 +102,16 @@ Ferramenta para exploração automática de SQL Injection.
 Download:
 https://sqlmap.org/
 
+---
+
 Burp Suite Community
 
 Interceptação de requisições HTTP.
 
 Download:
 https://portswigger.net/burp/communitydownload
+
+---
 
 ## 🧪 Procedimento Experimental
 ### 1️⃣ Execução do OWASP ZAP
@@ -113,6 +132,8 @@ Registrar vulnerabilidades encontradas
 Prints salvos em:
 
 ```/prints/zap```
+
+---
 
 ### 2️⃣ Teste de SQL Injection (Manual)
 Objetivo
@@ -145,6 +166,8 @@ Exemplo de query vulnerável:
 
 O trecho 1=1 sempre é verdadeiro.
 
+---
+
 ### 3️⃣ Teste de XSS (Cross-Site Scripting)
 Procedimento
 
@@ -158,51 +181,57 @@ Execução do script no navegador.
 
 Impacto
 
-Roubo de sessão
+- Roubo de sessão
 
-Execução de código malicioso
+- Execução de código malicioso
 
-Redirecionamento do usuário
+- Redirecionamento do usuário
+
+---
 
 ## 🧾 Vulnerabilidades Encontradas
-SQL Injection
+### SQL Injection
 
-Tipo: Injection
+- Tipo: Injection
 
-Severidade: Alta
+- Severidade: Alta
 
-Impacto: acesso indevido ao sistema
+- Impacto: acesso indevido ao sistema
 
-Cross-Site Scripting (XSS)
+### Cross-Site Scripting (XSS)
 
-Tipo: Client-side attack
+- Tipo: Client-side attack
 
-Severidade: Média
+- Severidade: Média
 
-Impacto: execução de scripts maliciosos
+- Impacto: execução de scripts maliciosos
 
-Headers inseguros
+### Headers inseguros
 
-Falta de CSP
+- Falta de CSP
 
-Falta de X-Frame-Options
+- Falta de X-Frame-Options
+
+---
 
 ## 🔐 Mitigações Propostas
-Para SQL Injection
+### Para SQL Injection
 
-Uso de Prepared Statements
+- Uso de Prepared Statements
 
-Validação de entradas
+- Validação de entradas
 
-Uso de ORM seguro
+- Uso de ORM seguro
 
-Para XSS
+### Para XSS
 
 Escape de saída
 
 Sanitização de dados
 
 Implementação de Content Security Policy (CSP)
+
+---
 
 ##📸 Evidências
 
