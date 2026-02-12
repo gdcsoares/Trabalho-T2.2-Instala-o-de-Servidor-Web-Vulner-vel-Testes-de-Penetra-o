@@ -12,21 +12,21 @@ Este trabalho tem como objetivo configurar um ambiente vulnerável e realizar te
 
 ## 🖥️ Ambiente Utilizado
 
-Sistema Operacional: Windows 10 / Linux / Outro
+- Sistema Operacional: Windows 10 / Linux / Outro
 
-Docker: versão XX
+- Docker: versão XX
 
-Aplicação vulnerável: OWASP Juice Shop
+- Aplicação vulnerável: OWASP Juice Shop
 
-Navegador: Google Chrome
+- Navegador: Google Chrome
 
-Ferramentas de teste:
+- Ferramentas de teste:
 
-OWASP ZAP
+  - OWASP ZAP
 
-sqlmap
+  - sqlmap
 
-Burp Suite Community
+  - Burp Suite Community
 
 ## 📦 Instalação do Ambiente Vulnerável
 ### 1️⃣ Instalar Docker
