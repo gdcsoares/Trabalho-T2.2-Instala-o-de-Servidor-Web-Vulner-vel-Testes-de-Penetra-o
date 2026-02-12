@@ -19,13 +19,11 @@ Este trabalho tem como objetivo configurar um ambiente vulnerável e realizar te
 
 ## 🖥️ Ambiente Utilizado
 
-- Sistema Operacional: Windows 10 / Linux / Outro
+- Sistema Operacional: Linux 
 
-- Docker: versão XX
+- Docker: versão 26.1.3
 
 - Aplicação vulnerável: OWASP Juice Shop
-
-- Navegador: Google Chrome
 
 - Ferramentas de teste:
 
