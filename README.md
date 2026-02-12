@@ -235,5 +235,3 @@ Contendo:
 - Exploração SQL Injection
 
 - Exploração XSS
-
-- Requisições HTTP interceptadas
