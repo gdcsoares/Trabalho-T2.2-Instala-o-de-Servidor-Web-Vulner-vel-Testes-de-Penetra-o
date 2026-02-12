@@ -1,10 +1,15 @@
 
 # 🛡️ Trabalho T2.2 — Testes de Segurança em Aplicação Web Vulnerável
 
-Nomes: Guilherme Soares, Pedro Rosa e Victor Setubal
-Disciplina: Segurança da Informação
-Professor: NOME DO PROFESSOR
-Data: 2026
+- Nomes: Guilherme Soares, Pedro Rosa e Victor Setubal
+
+- Disciplina: Segurança da Informação
+
+- Professor: Rodolfo
+
+- Data: 2026
+  
+--- 
 
 ## 🎯 Objetivo
 
