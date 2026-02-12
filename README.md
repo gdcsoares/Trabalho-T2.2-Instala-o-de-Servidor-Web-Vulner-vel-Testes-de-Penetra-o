@@ -102,15 +102,6 @@ https://sqlmap.org/
 
 ---
 
-### Burp Suite Community
-
-Interceptação de requisições HTTP.
-
-Download:
-https://portswigger.net/burp/communitydownload
-
----
-
 ## 🧪 Procedimento Experimental
 ### 1️⃣ Execução do OWASP ZAP
 
