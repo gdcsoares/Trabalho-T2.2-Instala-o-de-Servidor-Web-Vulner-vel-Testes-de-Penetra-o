@@ -6,7 +6,7 @@ Disciplina: Segurança da Informação
 Professor: NOME DO PROFESSOR
 Data: 2026
 
-##🎯 Objetivo
+## 🎯 Objetivo
 
 Este trabalho tem como objetivo configurar um ambiente vulnerável e realizar testes de segurança utilizando ferramentas automáticas e técnicas manuais, identificando vulnerabilidades reais e propondo medidas de mitigação.
 
