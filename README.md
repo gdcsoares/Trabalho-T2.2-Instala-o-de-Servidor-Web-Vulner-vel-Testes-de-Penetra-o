@@ -114,18 +114,18 @@ https://portswigger.net/burp/communitydownload
 ## 🧪 Procedimento Experimental
 ### 1️⃣ Execução do OWASP ZAP
 
-Abrir OWASP ZAP
+1- Abrir OWASP ZAP
 
-Selecionar "Automated Scan"
+2- Selecionar "Automated Scan"
 
-Inserir URL:
+3- Inserir URL:
 
 ```http://localhost:3000```
 
 
-Executar varredura
+4- Executar varredura
 
-Registrar vulnerabilidades encontradas
+5- Registrar vulnerabilidades encontradas
 
 Prints salvos em:
 
@@ -140,14 +140,14 @@ Bypass de autenticação utilizando injeção SQL.
 
 ### Procedimento
 
-Acessar tela de login
+1- Acessar tela de login
 
-Inserir no campo email:
+2- Inserir no campo email:
 
 ``` ' OR 1=1 -- ```
 
 
-Senha: qualquer valor
+3- Senha: qualquer valor
 
 ### Resultado esperado
 
