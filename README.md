@@ -86,7 +86,7 @@ Remover:
 ---
 
 ## 🔎 Ferramentas Utilizadas
-OWASP ZAP
+### OWASP ZAP
 
 Ferramenta para análise automática de vulnerabilidades web.
 
@@ -95,7 +95,7 @@ https://www.zaproxy.org/download/
 
 ---
 
-sqlmap
+### sqlmap
 
 Ferramenta para exploração automática de SQL Injection.
 
@@ -104,7 +104,7 @@ https://sqlmap.org/
 
 ---
 
-Burp Suite Community
+### Burp Suite Community
 
 Interceptação de requisições HTTP.
 
@@ -136,11 +136,11 @@ Prints salvos em:
 ---
 
 ### 2️⃣ Teste de SQL Injection (Manual)
-Objetivo
+### Objetivo
 
 Bypass de autenticação utilizando injeção SQL.
 
-Procedimento
+### Procedimento
 
 Acessar tela de login
 
@@ -151,11 +151,11 @@ Inserir no campo email:
 
 Senha: qualquer valor
 
-Resultado esperado
+### Resultado esperado
 
 Acesso ao sistema sem credenciais válidas.
 
-Explicação técnica
+### Explicação técnica
 
 A aplicação não valida corretamente os dados de entrada, permitindo a modificação da query SQL.
 
@@ -169,17 +169,17 @@ O trecho 1=1 sempre é verdadeiro.
 ---
 
 ### 3️⃣ Teste de XSS (Cross-Site Scripting)
-Procedimento
+### Procedimento
 
 Inserir em campo de busca ou comentário:
 
 ```<script>alert('XSS')</script>```
 
-Resultado esperado
+### Resultado esperado
 
 Execução do script no navegador.
 
-Impacto
+### Impacto
 
 - Roubo de sessão
 
