@@ -31,7 +31,6 @@ Este trabalho tem como objetivo configurar um ambiente vulnerável e realizar te
 
   - sqlmap
 
-  - Burp Suite Community
 
 ---
 
