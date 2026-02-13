@@ -34,7 +34,7 @@ Este trabalho tem como objetivo configurar um ambiente vulnerável e realizar te
 
 ---
 
-## 📦 Instalação do Ambiente Vulnerável
+## 📦 Instalação e Execução do Ambiente Vulnerável
 ### 1️⃣ Instalar Docker
 
 Baixar e instalar:
@@ -152,7 +152,48 @@ Exemplo de query vulnerável:
 ```SELECT * FROM users WHERE email = '' OR 1=1 -- ' AND password='123';```
 
 
-O trecho 1=1 sempre é verdadeiro.
+O trecho 1=1 sempre é verdadeiro e, dessa forma, o login é realizado.
+
+---
+
+### 3️⃣ Teste de usando o sqlmap (SQL Injection automática)
+Com o uso do OWASP ZAP foi possível verificar a possibilidade de vulnerabilidade para SQL Injection, qual o URL vulnerável e que o banco de dados é SQLite. Com isso podemos usar o seguinte comando para o sqlmap:
+
+```python3 sqlmap.py -u "http://localhost:3000/rest/products/search?q=test" --dbms=sqlite --prefix "'))" --suffix "--" --level=5 --risk=3 --batch --dump```
+
+Aqui temos que:
+
+- ```-u "http://localhost:3000/rest/products/search?q=test"```: Define a URL alvo. O sqlmap vai focar no parâmetro q (onde está o valor test) para tentar injetar códigos maliciosos. Essa URL vulnerável foi encontrada por meio do OWASP ZAP.
+- ```--dbms=sqlite```: Define-se que o alvo utiliza SQLite (descoberto por meio do OWASP ZAP).
+- ```-suffix "--"```: Adiciona isso depois do comando de ataque. O -- em SQL serve para comentar o restante da linha original, evitando que erros de sintaxe quebrem o ataque.
+- ```--level=5```: O nível máximo de testes (1 a 5). Faz com que o SQLMap tente injetar em mais lugares (como cabeçalhos HTTP, cookies, etc.) e use muito mais payloads.
+- ```--risk=3```: O nível máximo de risco (1 a 3). No nível 3, a ferramenta tenta comandos que podem causar danos ou alterações no banco de dados (como queries baseadas em OR). É necessário atenção pois isso pode corromper dados do ambiente.
+- ```--batch```: Modo automático. O SQLMap não vai te perguntar "[Y/n]"; ele escolherá sempre a resposta padrão.
+- ```--dump```: O objetivo final. Uma vez que ele confirme a vulnerabilidade, ele vai baixar (extrair) todo o conteúdo das tabelas que conseguir acessar.
+
+Quando executamos isso no nosso teste, foi possível descobrir as tabelas existentes no banco de dados. Foi possível descobrir a tabela Users e, por isso, vamos focar nela para tentarmos descobrir credenciais. Para isso, executa-se o seguinte comando: 
+
+```python3 sqlmap.py -u "http://localhost:3000/rest/products/search?q=test" --dbms=sqlite --prefix "'))" --suffix "--" -T Users -C "id,email,password,role" --dump --batch```
+
+onde:
+
+- ```-T Users```: Define a tabela alvo.
+- ```-C "id,email,password,role"```: As colunas de interesse (Descobertos pelo comando do sqlmap utilizado anteriormente).
+
+Com isso, conseguimos obter os usuários, seus papéis (roles) e as senhas (as quais utilizavam para criptografica Hash MD5) sendo que algumas senhas já foram descriptografadas pelo próprio sqlmap.
+
+Com isso, com ajuda do sqlmap e o uso do OWASP ZAP foi possível expor dados que, obviamente, deveriam ser confidenciais.
+
+#### Remediação a esse tipo de ataque:
+a) Consultas Parametrizadas (Prepared Statements): Em vez de montar a query como uma string:
+- Errado (Vulnerável): "SELECT * FROM Products WHERE name = '" + input + "'"
+- Certo (Seguro): Use placeholders (?). O banco de dados tratará o input apenas como texto, e não como parte do comando SQL.
+
+b) Hashing de Senhas Moderno: Nunca use MD5 ou SHA1. Eles são rápidos demais, o que facilita ataques de força bruta. Use Argon2, bcrypt ou scrypt com um "salt" único para cada usuário.
+
+c) Princípio do Menor Privilégio: O usuário que o site usa para acessar o banco de dados não deve ter permissão para ver tabelas de sistema ou deletar dados. Ele deve ter acesso apenas ao estritamente necessário.
+
+d) Web Application Firewall (WAF): Um WAF poderia detectar e bloquear o tráfego do sqlmap ao identificar padrões comuns de ataque (como o uso excessivo de UNION SELECT ou ORDER BY).
 
 ---
 
