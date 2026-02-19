@@ -207,7 +207,7 @@ d) Web Application Firewall (WAF): Um WAF poderia detectar e bloquear o tráfego
 
 Inserir em campo de busca ou comentário:
 
-```<script>alert('XSS')</script>```
+```<img src=x onerror=alert('XSS')>```
 
 ### Resultado esperado
 
