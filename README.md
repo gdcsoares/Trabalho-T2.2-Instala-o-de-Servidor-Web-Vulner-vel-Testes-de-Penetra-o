@@ -197,7 +197,7 @@ d) Web Application Firewall (WAF): Um WAF poderia detectar e bloquear o tráfego
 
 ---
 
-### 3️⃣ Teste de XSS (Cross-Site Scripting)
+### 4️⃣ Teste de XSS (Cross-Site Scripting)
 ### Procedimento
 
 Inserir em campo de busca ou comentário:
